@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+rm ~/.bashrc
+rm ~/.bash_profile
+rm ~/.bash_aliases
+ln -s ~/dots/bash/bashrc ~/.bashrc
+ln -s ~/dots/bash/bash_profile ~/.bash_profile
+ln -s ~/dots/bash/bash_aliases ~/.bash_aliases
+
+rm ~/.vim
+rm ~/.vimrc
+rm ~/.gvimrc
+ln -s ~/dots/vim ~/.vim
+ln -s ~/dots/vim/vimrc ~/.vimrc
+ln -s ~/dots/vim/gvimrc ~/.gvimrc
+
+rm ~/.gemrc
+rm ~/.gitconfig 
+rm ~/.screenrc
+ln -s ~/dots/misc/gemrc ~/.gemrc
+ln -s ~/dots/misc/gitconfig ~/.gitconfig
+ln -s ~/dots/misc/screenrc ~/.screenrc
+
+rm ~/bin
+ln -s ~/dots/bin ~/bin
+
+source ~/.bash_profile

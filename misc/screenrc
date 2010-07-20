@@ -1,0 +1,15 @@
+shell -${SHELL}
+altscreen on
+hardstatus off
+hardstatus alwayslastline
+#hardstatus string '%{= kw}[ %{C}%H %{w}][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{w}][%{r} %m-%d %{C} %C%A %{w}]'
+hardstatus string "%{= kw}%-w%{= BW}%n %t%{-}%+w %-= %c"
+startup_message off
+vbell off
+
+screen -t shell 0 bash
+screen -t bash  1 bash
+screen -t bash  2 bash
+screen -t bash  3 bash
+screen -t bash  4 bash
+select 0

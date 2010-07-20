@@ -1,0 +1,57 @@
+# Files
+alias reloadbash="source ~/cl/etc/bash_profile"
+alias profile="vim ~/.bash_profile"
+alias rc="vim ~/.bashrc"
+alias aliases="vim ~/.bash_aliases"
+
+# MySQL
+alias startmy="sudo launchctl load -w /Library/LaunchDaemons/com.mysql.mysqld.plist"
+alias stopmy="sudo launchctl unload -w /Library/LaunchDaemons/com.mysql.mysqld.plist"
+
+# History
+alias h="history"
+hs() { h | grep $1; }
+
+# General
+alias ll="ls -lG"
+alias la="ls -AG"
+alias l="ls -aCFG"
+alias a="ls -alG"
+alias s="cd .."
+alias ..="cd .."
+alias ...="cd .. ; cd .."
+alias q="exit"
+alias c="clear"
+cl() { cd $1; ls -al; }
+
+# Git
+alias gs="git status"
+alias glg="git log"
+alias gci="git commit -am"
+alias gcm="git commit"
+alias gb="git branch"
+alias gba="git branch -a"
+alias gco="git checkout"
+alias ga="git add"
+alias gd="git diff"
+alias gph="git push"
+alias gpl="git pull"
+
+# Search 
+alias g="grep -i"  # Case insensitive grep
+gns(){ # Case insensitive, excluding git folders
+  find . -path '*/.git' -prune -o -type f -print0 | xargs -0 grep -I -n -e '$1'
+}
+alias f="find . -iname"
+
+# Misc
+alias ducks="du -cksh * | sort -rn | head -11" # Lists folders and files sizes in the current folder
+alias systail="tail -f /var/log/system.log"
+alias m="more"
+alias df="df -h" # Show disk usage
+alias emacs="/Applications/Emacs.app/Contents/MacOS/Emacs"
+
+# Shows most used commands
+alias profileme="history | awk '{print \$2}' | awk 'BEGIN{FS=\"|\"}{print \$1}' | sort | uniq -c | sort -n | tail -n 20 | sort -nr"
+# Copies folder and all sub files and folders, preserving security and dates
+alias cp_folder="cp -Rpv" 

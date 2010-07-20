@@ -1,0 +1,43 @@
+# Shamlessly stolen from twerth @ infinitered
+# http://www.infinitered.com/blog/?p=10 for more details
+
+# Identify OS and Machine
+export OS=`uname -s | sed -e 's/  */-/g;y/ABCDEFGHIJKLMNOPQRSTUVWXYZ/abcdefghijklmnopqrstuvwxyz/'`
+export OSVERSION=`uname -r`; OSVERSION=`expr "$OSVERSION" : '[^0-9]*\([0-9]*\.[0-9]*\)'`
+export MACHINE=`uname -m | sed -e 's/  */-/g;y/ABCDEFGHIJKLMNOPQRSTUVWXYZ/abcdefghijklmnopqrstuvwxyz/'`
+export PLATFORM="$MACHINE-$OS-$OSVERSION"
+# Note, default OS is assumed to be OSX
+
+# Path 
+if [ "$OS" = "darwin" ] ; then
+  export GEM_PATH="$HOME/.gem/ruby/1.9"
+  export GEM_HOME="$HOME/.gem/ruby/1.9"
+  PATH="$HOME/.gem/ruby/1.9/bin:$PATH"
+  PATH="/usr/local/bin:/usr/local/sbin:$HOME/bin:$HOME/.homebrew/bin:$PATH"
+  PATH="$PATH:/usr/local/mysql/bin"
+  export PATH=$PATH
+fi
+
+# Load in .bashrc 
+source ~/.bashrc
+
+# Hello Messsage 
+echo -e "Kernel Information: " `uname -smr`
+echo -e "`bash --version`"
+echo -ne "Uptime: "; uptime
+echo -ne "Server time is: "; date
+
+# Notes: 
+# When you start an interactive shell (log in, open terminal or iTerm in OS X, 
+# or create a new tab in iTerm) the following files are read and run, in this order:
+#     profile
+#     bashrc
+#     .bash_profile
+#     .bashrc (only because this file is run (sourced) in .bash_profile)
+#
+# When an interactive shell, that is not a login shell, is started 
+# (when you run "bash" from inside a shell, or when you start a shell in 
+# xwindows [xterm/gnome-terminal/etc] ) the following files are read and executed, 
+# in this order:
+#     bashrc
+#     .bashrc
