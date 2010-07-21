@@ -13,6 +13,9 @@ elseif has("x11")
 elseif has("gui_win32")
 end
 
+" Disable the intro message
+set shortmess+=I
+
 " General 
 set anti " Antialias font
 "set transparency=0

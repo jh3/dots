@@ -54,7 +54,7 @@ set sidescrolloff=2
 set numberwidth=4
 set title " Show title in console title bar
 set ttyfast " Smoother changes
-set foldmethod=syntax " Set the code folding method based on the language syntax
+"set foldmethod=syntax " Set the code folding method based on the language syntax
 set equalalways " Multiple windows, when created, are equal in size
 set splitbelow splitright
 set cursorline
@@ -69,15 +69,18 @@ set ls=2
 set wrap
 set formatoptions=1
 set lbr
-set backupdir=~/backup/vim	" set backup location
-set backup	" enable backup
-set directory=~/backup/vim/swap	" set swap directory
 set listchars=trail:.,tab:>-,eol:$
 set nolist
 set backspace=indent,eol,start
 set matchpairs+=<:>
 set vb t_vb= " Turn off bell, this could be more annoying, but I'm not sure how
 set sessionoptions=blank,buffers,curdir,folds,help,resize,tabpages,winsize
+
+" Prevent junk/swap files
+set nobackup
+set nowritebackup
+set noswapfile
+
 let g:loaded_matchparen= 1 " Turn off matching braces
 
 syntax on
@@ -132,12 +135,5 @@ autocmd FileType c set omnifunc=ccomplete#Complete
 autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete 
 
 " Plugins
-" -------
-"let g:miniBufExplMapWindowNavVim = 1 " Allow ctrl + vim key bindings to be used to scroll through buffers
-
-"map ,f :FuzzyFinderTextMate<CR>
-"map ,b :FuzzyFinderBuffer<CR>
-"let g:fuzzy_ignore = '.o;.obj;.bak;.exe;.pyc;.pyo;.DS_Store;.db'
-
-"let g:AutoComplPop_IgnoreCaseOption = 0
-"let g:AutoComplPop_BehaviorKeywordLength = 2
+let g:AutoComplPop_IgnoreCaseOption = 0
+let g:AutoComplPop_BehaviorKeywordLength = 2
