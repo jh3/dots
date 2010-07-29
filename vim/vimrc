@@ -124,8 +124,7 @@ autocmd BufReadPost *
 \ endif |
 \ endif
 
-" Omni Completion
-autocmd FileType html :set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 autocmd FileType python set omnifunc=pythoncomplete#Complete
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
@@ -137,3 +136,4 @@ autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
 " Plugins
 let g:AutoComplPop_IgnoreCaseOption = 0
 let g:AutoComplPop_BehaviorKeywordLength = 2
+nmap <silent> <C-n> :NERDTreeToggle<CR>

@@ -14,7 +14,8 @@ if has("gui_macvim")
 	call Fullscreen()
   set fuoptions=maxvert,maxhorz 
   "set guifont=Monaco:h13
-  set guifont=ProggyClean:h11
+  "set guifont=ProggyClean:h11
+	set guifont=Inconsolata:h14
   set guioptions-=T  " remove toolbar
   set stal=2 " turn on tabs by default
 elseif has("gui_gtk2")
