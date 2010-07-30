@@ -1,0 +1,3 @@
+[submodule "vim/bundle/gist-vim"]
+	path = vim/bundle/gist-vim
+	url = http://github.com/mattn/gist-vim.git
