@@ -137,3 +137,16 @@ autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
 let g:AutoComplPop_IgnoreCaseOption = 0
 let g:AutoComplPop_BehaviorKeywordLength = 2
 nmap <silent> <C-n> :NERDTreeToggle<CR>
+
+let g:user_zen_settings = {
+\ 'php' : {
+\ 'extends' : 'html',
+\ 'filters' : 'c',
+\ },
+\ 'xml' : {
+\ 'extends' : 'html',
+\ },
+\ 'haml' : {
+\ 'extends' : 'html',
+\ },
+\}
