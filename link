@@ -24,4 +24,8 @@ ln -s ~/dots/misc/screenrc ~/.screenrc
 rm ~/bin
 ln -s ~/dots/bin ~/bin
 
+# Find all doc files in the bundle/plugin folders and move
+# them to the main .vim/doc folder so vim knows about them
+find ~/dots/vim/bundle -type f -name "*.txt" -iwholename "*/doc/*.txt" -exec cp {} ~/dots/vim/doc \;
+
 source ~/.bash_profile
