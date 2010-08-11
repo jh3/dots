@@ -15,11 +15,9 @@ ln -s ~/dots/vim/vimrc ~/.vimrc
 ln -s ~/dots/vim/gvimrc ~/.gvimrc
 
 rm ~/.gemrc
-rm ~/.gitconfig 
 rm ~/.screenrc
 rm ~/.irbrc
 ln -s ~/dots/misc/gemrc ~/.gemrc
-ln -s ~/dots/misc/gitconfig ~/.gitconfig
 ln -s ~/dots/misc/screenrc ~/.screenrc
 ln -s ~/dots/misc/irbrc ~/.irbrc
 
