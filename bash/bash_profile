@@ -28,6 +28,9 @@ source ~/.bashrc
 #echo -ne "Server time is: "; date
 echo -e "`fortune | cowsay`"
 
+# Source RVM
+[[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
+
 # Notes: 
 # When you start an interactive shell (log in, open terminal or iTerm in OS X, 
 # or create a new tab in iTerm) the following files are read and run, in this order:

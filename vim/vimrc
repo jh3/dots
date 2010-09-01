@@ -150,3 +150,15 @@ let g:user_zen_settings = {
 \ 'extends' : 'html',
 \ },
 \}
+
+function! Papertable()
+	%s/ Pa/, PA/g
+	%s/\<St\>/St.,/g
+	%s/\<Rd\>/Rd.,/g
+	%s/\<Ave\>/Ave.,/g
+	%s/\<Blvd\>/Blvd.,/g
+	%s/\<Dr\>/Dr.,/g
+	%s/\<Ln\>/Ln.,/g
+	%s/-\<\d\{5}\>//g
+	%s/\s\s/ /g
+endfunction
