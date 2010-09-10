@@ -1,1 +1,16 @@
 My dot files, apps, and a tiny script to symlink them all.
+
+Be sure to run the following commands after a fresh checkout:
+
+git submodule init
+git submodule update
+
+The init command only needs to be executed the first time you do 
+a fresh checkout.  The update command needs to be executed the first
+checkout or when a change happens within one of the submodules.
+
+To track a newer version of a vim plugin:
+
+cd path/to/plugin
+git remote update
+git merge origin/master
