@@ -40,9 +40,9 @@ export COLOR_LIGHT_GRAY='\033[0;37m'
 alias colorslist="set | egrep 'COLOR_\w*'"  # lists all the colors
 
 # History 
-export HISTCONTROL=erasedups
+export HISTCONTROL="ignoreboth"
 export HISTFILESIZE=30000
-export HISTIGNORE="??:???"
+export HISTIGNORE="q:a:s:c:gpl:gs:gph:gci:&"
 shopt -s histappend # append to history rather than overwrite
 
 # Misc 
