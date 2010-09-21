@@ -64,10 +64,10 @@ set ignorecase " Ignore case when searching
 set smartcase " Ignore case when searching lowercase
 set background=dark 
 set showcmd
-set statusline=%F%m%r%h%w\ [TYPE=%Y\ %{&ff}]\ %{fugitive#statusline()}\ [%l/%L\ (%p%%)]
+set statusline=%F%m%r%h%w\ [TYPE=%Y\ %{&ff}]\ %{fugitive#statusline()}\ [%c\ %l/%L\ (%p%%)]
 set ls=2
 set wrap
-set formatoptions=1
+set formatoptions=qrn1
 set lbr
 set listchars=trail:.,tab:>-,eol:$
 set nolist
@@ -86,29 +86,47 @@ let g:loaded_matchparen= 1 " Turn off matching braces
 syntax on
 colorscheme ir_dark
 
-:noremap ,v :vsp^M^W^W<cr>	" vertical split then to new buffer
-:noremap ,h :split^M^W^W<cr>	" horizontal split then to new buffer
-:noremap ,i :set list!<CR> " Toggle invisible chars
+" Turn off vim's default regex characters
+nnoremap / /\v
+vnoremap / /\v
 
-match LongLineWarning '\%120v.*' " Error format when a line is longer than 120
+" Vertical split then to new buffer
+nnoremap <leader>v <C-w>v<C-w>l
+nnoremap <leader>i :set list!<cr> " Toggle invisible chars
 
-" Mappings
-imap jj <Esc>
-imap uu _
-imap hh =>
-imap aa @
-map <up> gk
-map k gk
-imap <up> <C-o>gk
-map <down> gj
-map j gj
-imap <down> <C-o>gj
-map E ge
-map <S-Enter> O<ESC> " inserts new line without going into insert mode
-map <Enter> o<ESC>
+" Clear recent search highlighting
+nnoremap <leader><space> :noh<cr>
+
+" Make the tab key match braces
+nnoremap <tab> %
+vnoremap <tab> %
+
+" Easily navigate around splits
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
 
 " Allows :w!! to write a file using sudo if you forgot to sudo vim <file>
-cmap w!! %!sudo tee > /dev/null %
+cnoremap w!! %!sudo tee > /dev/null %
+
+" Other Mappings
+inoremap jj <Esc>
+inoremap uu _
+inoremap hh =>
+inoremap aa @
+inoremap <up> <C-o>gk
+inoremap <down> <C-o>gj
+noremap <up> gk
+noremap k gk
+noremap <down> gj
+noremap j gj
+noremap E ge
+noremap <S-Enter> O<ESC> " inserts new line without going into insert mode
+noremap <Enter> o<ESC>
+
+" Error format when a line is longer than 120
+match LongLineWarning '\%120v.*'
 
 " File Stuff
 filetype plugin indent on
@@ -144,7 +162,7 @@ cabbr pc !php -l %
 " Plugins
 let g:AutoComplPop_IgnoreCaseOption = 0
 let g:AutoComplPop_BehaviorKeywordLength = 2
-nmap <silent> <C-n> :NERDTreeToggle<CR>
+nnoremap <silent> <C-n> :NERDTreeToggle<CR>
 
 let g:user_zen_settings = {
 \ 'php' : {

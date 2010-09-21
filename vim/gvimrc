@@ -8,16 +8,24 @@ function! Halfscreen()
 	set lines=82
 endfunction
 
+function! Normalscreen()
+	set columns=89
+	set lines=82
+endfunction
+
 " OS Specific 
 if has("gui_macvim")
   " fullscreen options (MacVim only), resized window when changed to fullscreen
-	call Halfscreen()
+	call Normalscreen()
   set fuoptions=maxvert,maxhorz 
   "set guifont=Monaco:h13
   "set guifont=ProggyClean:h11
 	set guifont=Inconsolata:h14
   set guioptions-=T  " remove toolbar
   set stal=2 " turn on tabs by default
+	set relativenumber
+	set textwidth=79
+	set colorcolumn=85
 elseif has("gui_gtk2")
   set guifont=Monaco
   set guioptions-=T  " remove toolbar
@@ -31,10 +39,6 @@ set shortmess+=I
 " General 
 set anti " Antialias font
 "set transparency=0
-
-" Default size of window
-"set columns=115 
-"set lines=54
 
 " Tab headings 
 set gtl=%t gtt=%F
