@@ -92,6 +92,8 @@ vnoremap / /\v
 
 " Vertical split then to new buffer
 nnoremap <leader>v <C-w>v<C-w>l
+" Horizontal split then to new buffer
+nnoremap <leader>h <C-w>s<C-w>l
 nnoremap <leader>i :set list!<cr> " Toggle invisible chars
 
 " Clear recent search highlighting
