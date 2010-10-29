@@ -134,6 +134,7 @@ match LongLineWarning '\%120v.*'
 filetype plugin indent on
 au BufNewFile,BufRead *.install set filetype=php
 au BufNewFile,BufRead *.module set filetype=php
+au BufNewFile,BufRead Capfile set filetype=ruby
 autocmd FileType html :set filetype=xhtml 
 
 " When editing a file, always jump to the last cursor position
