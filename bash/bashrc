@@ -1,25 +1,11 @@
-# Source other files 
-source ~/bin/git-completion.bash
-source ~/.bash_aliases
-
-# Turn on advanced bash completion if the file exists 
-if [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
-fi
+# Editors 
+export EDITOR='vim'
+export GIT_EDITOR='vim'
 
 # Colors 
 export TERM=xterm-color
 export GREP_OPTIONS='--color=auto' GREP_COLOR='1;32'
 export CLICOLOR=1 
-
-if [ "$OS" = "linux" ] ; then
-  alias ls='ls --color=auto' # For linux, etc
-  export LS_COLORS='di=1:fi=0:ln=31:pi=5:so=5:bd=5:cd=5:or=31:mi=0:ex=35:*.rb=90'
-else
-  alias ls='ls -G'  # OS-X SPECIFIC - the -G command in OS-X is for colors, in Linux it's no groups
-fi
-
-# Setup some colors to use later in interactive shell or scripts
 export COLOR_NC='\033[0m' # No Color
 export COLOR_WHITE='\033[1;37m'
 export COLOR_BLACK='\033[0;30m'
@@ -37,7 +23,6 @@ export COLOR_BROWN='\033[0;33m'
 export COLOR_YELLOW='\033[1;33m'
 export COLOR_GRAY='\033[1;30m'
 export COLOR_LIGHT_GRAY='\033[0;37m'
-alias colorslist="set | egrep 'COLOR_\w*'"  # lists all the colors
 
 # History 
 export HISTCONTROL="ignoreboth"
@@ -48,7 +33,7 @@ shopt -s histappend # append to history rather than overwrite
 # Misc 
 shopt -s checkwinsize # After each command, checks the windows size and changes lines and columns
 
-# bash completion settings (actually, these are readline settings)
+# Bash completion settings (actually, these are readline settings)
 bind "set completion-ignore-case on" # note: bind used instead of sticking these in .inputrc
 bind "set bell-style none" # no bell
 bind "set show-all-if-ambiguous On" # show list automatically, without double tab
@@ -56,15 +41,10 @@ bind "set show-all-if-ambiguous On" # show list automatically, without double ta
 # Use vi command mode
 set -o vi
 
-# Prompts ----------------------------------------------------------
-#git_dirty_flag() {
-  #git status 2> /dev/null | grep -c : | awk '{if ($1 > 0) print "⚡"}'
-#}
-
+# Prompt
 prompt_func() {
     previous_return_value=$?;
     prompt="\[${COLOR_GREEN}\]\w\[${COLOR_GRAY}\]$(__git_ps1)\[${COLOR_NC}\] "
-    #prompt="\[${COLOR_GREEN}\]\w\[${COLOR_GRAY}\]$(__git_ps1)\[${COLOR_YELLOW}\]$(git_dirty_flag)\[${COLOR_NC}\] "
 
     if test $previous_return_value -eq 0
     then
@@ -75,13 +55,6 @@ prompt_func() {
 }
 PROMPT_COMMAND=prompt_func
 
-# export PS1="\[${COLOR_GREEN}\]\w\[${COLOR_NC}\] > "  # Primary prompt with only a path
-# export PS1="\[${COLOR_RED}\]\w > \[${COLOR_NC}\]"  # Primary prompt with only a path, for root, need condition to use this for root
-# export PS1="\[${COLOR_GRAY}\]\u@\h \[${COLOR_GREEN}\]\w > \[${COLOR_NC}\]"  # Primary prompt with user, host, and path 
-# This runs before the prompt and sets the title of the xterm* window.  If you set the title in the prompt
-# weird wrapping errors occur on some systems, so this method is superior
-#export PROMPT_COMMAND='echo -ne "\033]0;${PWD##*/} ${USER}@${HOSTNAME%%.*}"; echo -ne "\007"'  # user@host path
-
 export PS2='> '    # Secondary prompt
 export PS3='#? '   # Prompt 3
 export PS4='+'     # Prompt 4
@@ -91,7 +64,7 @@ function xtitle {  # change the title of your xterm* window
   echo -ne "\033]0;$1\007" 
 }
 
-# I got the following from, and mod'd it: http://www.macosxhints.com/article.php?story=20020716005123797
+# The following is from: http://www.macosxhints.com/article.php?story=20020716005123797
 #    The following aliases (save & show) are for saving frequently used directories
 #    You can save a directory using an abbreviation of your choosing. Eg. save ms
 #    You can subsequently move to one of the saved directories by using cd with
@@ -100,20 +73,5 @@ if [ ! -f ~/.dirs ]; then  # if doesn't exist, create it
   touch ~/.dirs
 fi
 
-alias show='cat ~/.dirs'
-save (){
-  command sed "/!$/d" ~/.dirs > ~/.dirs1; \mv ~/.dirs1 ~/.dirs; echo "$@"=\"`pwd`\" >> ~/.dirs; source ~/.dirs ; 
-}  #"
-source ~/.dirs  # Initialization for the above 'save' facility: source the .sdirs file 
+source ~/.dirs  # Initialization for the 'save' facility: source the .sdirs file 
 shopt -s cdable_vars # set the bash option so that no '$' is required when using the above facility
-
-# Editors 
-export EDITOR='vim'
-export GIT_EDITOR='vim'
-alias v='vim'
-
-if [ "$OS" = "linux" ] ; then
-	alias processes_all='ps -aulx'
-else
-	alias top='top -o cpu' # os x
-fi
