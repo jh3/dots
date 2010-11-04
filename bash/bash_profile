@@ -6,8 +6,10 @@
 source ~/.bashrc
 
 # Turn on advanced bash completion if the file exists 
-if [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
+if [ -f `brew --prefix`/etc/bash_completion ]; then
+  . `brew --prefix`/etc/bash_completion
+elif [ -f /etc/bash_completion ]; then
+	. /etc/bash_completion
 fi
 
 # Identify OS and Machine
