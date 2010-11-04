@@ -10,10 +10,10 @@ export PLATFORM="$MACHINE-$OS-$OSVERSION"
 
 # Path 
 if [ "$OS" = "darwin" ] ; then
-  export GEM_PATH="$HOME/.gem/ruby/1.9"
-  export GEM_HOME="$HOME/.gem/ruby/1.9"
-  PATH="$HOME/.gem/ruby/1.9/bin:$PATH"
-  PATH="/usr/local/bin:/usr/local/sbin:$HOME/bin:$HOME/.homebrew/bin:$PATH"
+  #export GEM_PATH="$HOME/.gem/ruby/1.9"
+  #export GEM_HOME="$HOME/.gem/ruby/1.9"
+  #PATH="$HOME/.gem/ruby/1.9/bin:$PATH"
+  PATH="/usr/local/bin:/usr/local/sbin:$HOME/bin:$PATH"
   PATH="$PATH:/usr/local/mysql/bin"
   export PATH=$PATH
 fi

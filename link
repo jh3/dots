@@ -3,29 +3,29 @@
 rm ~/.bashrc
 rm ~/.bash_profile
 rm ~/.bash_aliases
-ln -s ~/dots/bash/bashrc ~/.bashrc
-ln -s ~/dots/bash/bash_profile ~/.bash_profile
-ln -s ~/dots/bash/bash_aliases ~/.bash_aliases
+ln -s ~/Repositories/dots/bash/bashrc ~/.bashrc
+ln -s ~/Repositories/dots/bash/bash_profile ~/.bash_profile
+ln -s ~/Repositories/dots/bash/bash_aliases ~/.bash_aliases
 
 rm ~/.vim
 rm ~/.vimrc
 rm ~/.gvimrc
-ln -s ~/dots/vim ~/.vim
-ln -s ~/dots/vim/vimrc ~/.vimrc
-ln -s ~/dots/vim/gvimrc ~/.gvimrc
+ln -s ~/Repositories/dots/vim ~/.vim
+ln -s ~/Repositories/dots/vim/vimrc ~/.vimrc
+ln -s ~/Repositories/dots/vim/gvimrc ~/.gvimrc
 
 rm ~/.gemrc
 rm ~/.screenrc
 rm ~/.irbrc
-ln -s ~/dots/misc/gemrc ~/.gemrc
-ln -s ~/dots/misc/screenrc ~/.screenrc
-ln -s ~/dots/misc/irbrc ~/.irbrc
+ln -s ~/Repositories/dots/misc/gemrc ~/.gemrc
+ln -s ~/Repositories/dots/misc/screenrc ~/.screenrc
+ln -s ~/Repositories/dots/misc/irbrc ~/.irbrc
 
 rm ~/bin
-ln -s ~/dots/bin ~/bin
+ln -s ~/Repositories/dots/bin ~/bin
 
 # Find all doc files in the bundle/plugin folders and move
 # them to the main .vim/doc folder so vim knows about them
-find ~/dots/vim/bundle -type f -name "*.txt" -iwholename "*/doc/*.txt" -exec cp {} ~/dots/vim/doc \;
+find ~/Repositories/dots/vim/bundle -type f -name "*.txt" -iwholename "*/doc/*.txt" -exec cp {} ~/Repositories/dots/vim/doc \;
 
 source ~/.bash_profile

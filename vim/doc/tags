@@ -39,13 +39,7 @@
 'syntastic_quiet_warnings'	syntastic.txt	/*'syntastic_quiet_warnings'*
 .snippet	snipMate.txt	/*.snippet*
 .snippets	snipMate.txt	/*.snippets*
-:Ack	ack.txt	/*:Ack*
-:AckAdd	ack.txt	/*:AckAdd*
-:AckFile	ack.txt	/*:AckFile*
-:AckFromSearch	ack.txt	/*:AckFromSearch*
 :Errors	syntastic.txt	/*:Errors*
-:LAck	ack.txt	/*:LAck*
-:LAckAdd	ack.txt	/*:LAckAdd*
 :NERDTree	NERD_tree.txt	/*:NERDTree*
 :NERDTreeClose	NERD_tree.txt	/*:NERDTreeClose*
 :NERDTreeFind	NERD_tree.txt	/*:NERDTreeFind*
@@ -155,9 +149,6 @@ ReloadSnippets()	snipMate.txt	/*ReloadSnippets()*
 ResetAllSnippets()	snipMate.txt	/*ResetAllSnippets()*
 ResetSnippets()	snipMate.txt	/*ResetSnippets()*
 SyntasticMake()	syntastic.txt	/*SyntasticMake()*
-ack	ack.txt	/*ack*
-ack-author	ack.txt	/*ack-author*
-ack.txt	ack.txt	/*ack.txt*
 bufexplorer	bufexplorer.txt	/*bufexplorer*
 bufexplorer-changelog	bufexplorer.txt	/*bufexplorer-changelog*
 bufexplorer-credits	bufexplorer.txt	/*bufexplorer-credits*
