@@ -1,3 +1,7 @@
+# Source extra files
+source ~/bin/git-completion.bash
+source ~/.bash_aliases
+
 # Editors 
 export EDITOR='vim'
 export GIT_EDITOR='vim'
