@@ -4,8 +4,6 @@
 
 # Load .bashrc 
 source ~/.bashrc
-source ~/bin/git-completion.bash
-source ~/.bash_aliases
 
 # Turn on advanced bash completion if the file exists 
 if [ -f `brew --prefix`/etc/bash_completion ]; then
