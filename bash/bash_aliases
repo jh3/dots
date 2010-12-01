@@ -5,8 +5,8 @@ alias rc="$EDITOR ~/.bashrc"
 alias aliases="$EDITOR ~/.bash_aliases"
 
 # MySQL
-alias startmy="sudo launchctl load -w /Library/LaunchDaemons/com.mysql.mysqld.plist"
-alias stopmy="sudo launchctl unload -w /Library/LaunchDaemons/com.mysql.mysqld.plist"
+#alias startmy="sudo launchctl load -w /Library/LaunchDaemons/com.mysql.mysqld.plist"
+#alias stopmy="sudo launchctl unload -w /Library/LaunchDaemons/com.mysql.mysqld.plist"
 
 # History
 alias h="history"
@@ -26,8 +26,8 @@ alias c="clear"
 cl() { cd $1; ls -al; }
 
 # Git
-alias gs="git status"
-alias gg="git log"
+alias gs="git status -s"
+alias gg="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
 alias gci="git commit -am"
 alias gcm="git commit"
 alias gb="git branch"
@@ -37,6 +37,7 @@ alias ga="git add"
 alias gd="git diff"
 alias gh="git push"
 alias gl="git pull"
+alias gw="git shortlog -s --"
 
 # Search 
 alias g="grep -i"  # Case insensitive grep

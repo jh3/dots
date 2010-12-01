@@ -43,8 +43,7 @@ function! Tabstyle_spaces()
   set expandtab
 endfunction
 
-"call Tabstyle_spaces()
-call Tabstyle_tabs()
+call Tabstyle_spaces()
 
 let mapleader = ","
 
