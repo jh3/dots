@@ -83,7 +83,8 @@ set noswapfile
 let g:loaded_matchparen= 1 " Turn off matching braces
 
 syntax on
-colorscheme ir_dark
+"colorscheme ir_black
+colorscheme mac_classic
 
 " Turn off vim's default regex characters
 nnoremap / /\v
@@ -127,7 +128,7 @@ noremap <S-Enter> O<ESC> " inserts new line without going into insert mode
 noremap <Enter> o<ESC>
 
 " Error format when a line is longer than 120
-match LongLineWarning '\%120v.*'
+"match LongLineWarning '\%120v.*'
 
 " File Stuff
 filetype plugin indent on
