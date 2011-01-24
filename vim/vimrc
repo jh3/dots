@@ -83,8 +83,7 @@ set noswapfile
 let g:loaded_matchparen= 1 " Turn off matching braces
 
 syntax on
-"colorscheme ir_black
-colorscheme mac_classic
+colorscheme ir_black
 
 " Turn off vim's default regex characters
 nnoremap / /\v
