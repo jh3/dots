@@ -12,6 +12,22 @@ alias aliases="$EDITOR ~/.bash_aliases"
 alias h="history"
 hs() { h | grep $1; }
 
+# Git
+alias ga="git add"
+alias gb="git branch"
+alias gba="git branch -a"
+alias gc="git commit"
+alias gcaa="git commit -a --amend -C HEAD" # Put changes into the previous commit using the previous commit message
+alias gcm="git commit -am"
+alias gco="git checkout"
+alias gd="git diff"
+alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
+alias glt="git cat-file commit HEAD" # Show information about the last commit
+alias gph="git push"
+alias gpl="git pull"
+alias gs="git status -s" # Short status of repo
+alias gsl="git shortlog -s --"
+
 # General
 alias ll="ls -lG"
 alias la="ls -AG"
@@ -24,20 +40,6 @@ alias ...="cd .. ; cd .."
 alias q="exit"
 alias c="clear"
 cl() { cd $1; ls -al; }
-
-# Git
-alias gs="git status -s"
-alias gg="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
-alias gci="git commit -am"
-alias gcm="git commit"
-alias gb="git branch"
-alias gba="git branch -a"
-alias gco="git checkout"
-alias ga="git add"
-alias gd="git diff"
-alias gh="git push"
-alias gl="git pull"
-alias gw="git shortlog -s --"
 
 # Search 
 alias g="grep -i"  # Case insensitive grep
