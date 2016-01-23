@@ -1,46 +1,26 @@
-function! Fullscreen()
-	set columns=271
-	set lines=82
-endfunction
+" Unbind these keys for different bindings in vimrc
+if has('gui_macvim')
+  " D-t
+  macmenu &File.New\ Tab key=<nop>
+  " D-p
+  macmenu &File.Print key=<nop>
 
-function! Halfscreen()
-	set columns=135
-	set lines=82
-endfunction
+  " D-p
+  macmenu Edit.Find.Find\.\.\. key=<nop>
 
-function! Normalscreen()
-	set columns=89
-	set lines=82
-endfunction
+  " D-b
+  macmenu &Tools.Make key=<nop>
+  " D-l
+  macmenu &Tools.List\ Errors key=<nop>
 
-" OS Specific 
-if has("gui_macvim")
-  " fullscreen options (MacVim only), resized window when changed to fullscreen
-	call Normalscreen()
-  set fuoptions=maxvert,maxhorz 
-  "set guifont=Monaco:h13
-  "set guifont=ProggyClean:h11
-	set guifont=Inconsolata:h14
-  set guioptions-=T  " remove toolbar
-	" Remove the scrollbars
-	set guioptions+=LlRrb
-	set guioptions-=LlRrb
-  set stal=2 " turn on tabs by default
-	set relativenumber
-	set textwidth=79
-	set colorcolumn=85
-elseif has("gui_gtk2")
-  set guifont=Monaco
-elseif has("x11")
-elseif has("gui_win32")
-end
-
-" Disable the intro message
-set shortmess+=I
-
-" General 
-set anti " Antialias font
-"set transparency=0
-
-" Tab headings 
-set gtl=%t gtt=%F
+  " From: https://github.com/Lokaltog/vim-powerline/wiki/Patched-fonts
+  set guifont=Inconsolata:h14
+  " Hide toolbar and scrollbar in MacVim
+  set guioptions=egmrt
+  set guioptions+=LlRrb
+  set guioptions-=LlRrb
+  " Use option (alt) as meta key.
+  set macmeta
+  colorscheme molokai
+  let g:molokai_original = 1
+endif

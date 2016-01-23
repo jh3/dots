@@ -1,0 +1,47 @@
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Do not include hard line breaks and break on the previous word
+set formatoptions=1
+" Break lines visually
+set linebreak
+
+set breakat=\ |@-+;:,./?^I
+
+" Move around in virtually wrapped lines
+nnoremap j gj
+nnoremap k gk
+vnoremap j gj
+vnoremap k gk
+
+" Helpful for bullet points
+set smartindent
+
+" TODO: 
+" - Create a command to toggle this
+" - Change the color/highlighting if possible
+set spell spelllang=en_us
+
+set nonumber
+set textwidth=72
+
+" Puts a border on the left side of the screen
+"set foldcolumn=7
+
+" wrap lines with gq
+" {} and () are useful when dealing with paragraphs and sentences
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" TODO
+" - Modify the statusline (word count, etc.)
+" - Turn off matching parenthesis/braces/brackets
+" - Better spellcheck? Maybe use the quickwindow?
+" - Change font (make it bigger)
+" - Force a color scheme? (probably a bad idea)
+
+" Resources:
+" http://tech.geoff.me/2008/05/vim-word-processor.html
+" http://blog.bigsmoke.us/2009/09/07/vim-tips-for-editing-prose
+" https://github.com/honza/writer.vim
+" http://contsys.tumblr.com/post/491802835/vim-soft-word-wrap
+" http://22ideastreet.com/blog/2008/11/06/vim-word-processing/

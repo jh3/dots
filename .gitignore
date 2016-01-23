@@ -1,5 +1,3 @@
 .DS_Store
 apps/*
 bak/*
-bin/drush
-misc/gitconfig

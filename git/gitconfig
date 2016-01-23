@@ -1,0 +1,92 @@
+[advice]
+    statusHints = false
+
+[alias]
+    # https://git.wiki.kernel.org/articles/a/l/i/Aliases.html
+
+    # `git remote prune origin`: remove remote-tracking branches that were deleted from the remote repo
+    # `git gc`: cleanup unnecessary files and optimize the local repository
+    # `git clean -df`: remove untracked files and directories from the working tree
+    # `git stash clear`: remove all stashed states
+    trim = !git remote prune origin && git gc
+    cleanup = !git clean -df && git stash clear
+
+    # Add untracked, remove deleted, and show status
+    adda = !git add -A && git status
+
+    # Diff what is staged for the next commit
+    dc = diff --cached
+    # Diff overview
+    ds = diff --stat
+
+    # Custom graph log
+    graph = log --pretty=nice --all --date-order --graph
+    # Custom pretty log
+    logp = log --pretty=nice --date-order
+
+    # Diffstat log
+    logst = log --stat
+    # Short format diffstat log
+    logsf = log --stat --format=oneline --abbrev-commit
+
+    # Display the number of commits per author in numerical order
+    who = shortlog -sn --
+
+    fo = !git fetch origin && git fetch --tags
+    pom = !git pull origin master
+    db = !sh -c \"git push origin :$1 && git branch -d $1\" -
+    tag-prod-release = !git tag -a $(date +%Y%m%d%H%M)
+    prod-push = !git push origin master && git push --tags
+
+    #s = status --porcelain
+    s = status
+    c = commit
+    b = branch
+    co = checkout
+    d = diff
+    lg = log -p
+    lol = log --graph --decorate --pretty=oneline --abbrev-commit
+    lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+    ls = ls-files
+
+    # Show files ignored by git
+    ign = ls-files -o -i --exclude-standard
+
+    ctags = !.git/hooks/ctags
+
+[color]
+    # color opts: normal, black, red, green, yellow, blue, magenta, cyan, or white
+    ui = auto
+    interactive = auto
+
+[core]
+    # Use custom `.gitignore` and `.gitattributes`
+    excludesfile = ~/.gitignore
+    attributesfile = ~/.gitattributes
+    editor = vim
+    autocrlf = input
+    trustctime = false
+
+[diff]
+    tool = vimdiff
+    mnemonicprefix = true
+
+[difftool]
+    prompt = false
+
+[merge]
+    stat = true
+
+[pretty]
+    # tut: http://gitimmersion.com/lab_10.html
+    # ref: http://linux.die.net/man/1/git-log
+    # Result: <short-sha> <commit-message> (<pointer-names>) -- <commit-author-name>; <relative-time>
+    nice = "%C(yellow)%h%C(reset) %C(white)%s%C(cyan)%d%C(reset) -- %an; %ar"
+
+[user]
+    name = Joe Hassick
+    email = j@joehassick.com
+[push]
+    default =  current
+[init]
+    templatedir = ~/.git_template

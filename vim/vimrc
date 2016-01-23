@@ -1,182 +1,243 @@
-" -----------------------------------------------------------------------------  
-" |                            VIM Settings                                   |
-" |                   (see gvimrc for gui vim settings)                       |
-" |                                                                           |
-" | Some highlights:                                                          |
-" |   jj = <esc>  Very useful for keeping your hands on the home row          |
-" |                                                                           |
-" |   ,f = fuzzy find all files                                               |
-" |   ,b = fuzzy find in all buffers                                          |
-" |                                                                           |
-" |   hh = inserts '=>'                                                       |
-" |   aa = inserts '@'                                                        |
-" |                                                                           |
-" |   ,h = new horizontal window                                              |
-" |   ,v = new vertical window                                                |
-" |                                                                           |
-" |   ,i = toggle invisibles                                                  |
-" |                                                                           |
-" |   enter and shift-enter = adds a new line after/before the current line   |
-" |                                                                           |
-" |   :call Tabstyle_tabs = set tab to real tabs                              |
-" |   :call Tabstyle_spaces = set tab to 2 spaces                             |
-" |                                                                           |
-" | Put machine/user specific settings in ~/.vimrc.local                      |
-" -----------------------------------------------------------------------------  
 set nocompatible
+filetype off
 
-silent! call pathogen#helptags()
-silent! call pathogen#runtime_append_all_bundles()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
-function! Tabstyle_tabs()
-  set softtabstop=2
-  set shiftwidth=2
-  set tabstop=2
-  set noexpandtab
-endfunction
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'rizzatti/dash.vim'
+Plugin 'kien/ctrlp.vim'
+Plugin 'wgibbs/vim-irblack'
+Plugin 'fugalh/desert.vim'
+Plugin 'tomasr/molokai'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-commentary'
+Plugin 'Raimondi/delimitMate'
+Plugin 'scrooloose/syntastic'
+Plugin 'ervandew/supertab'
+Plugin 'gregsexton/MatchTag'
+Plugin 'chrisbra/SudoEdit.vim'
 
-function! Tabstyle_spaces()
-  " Use 2 spaces
-  set softtabstop=2
-  set shiftwidth=2
-  set tabstop=2
-  set expandtab
-endfunction
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
+Plugin 'garbas/vim-snipmate'
 
-call Tabstyle_spaces()
+Plugin 'mileszs/ack.vim'
+Plugin 'vim-scripts/renamer.vim'
 
-let mapleader = ","
-
-set ai " Automatically set the indent of a new line (local to buffer)
-set si " smartindent	(local to buffer)
-set sidescrolloff=2
-set numberwidth=4
-set title " Show title in console title bar
-set ttyfast " Smoother changes
-"set foldmethod=syntax " Set the code folding method based on the language syntax
-set equalalways " Multiple windows, when created, are equal in size
-set splitbelow splitright
-set cursorline
-set hlsearch  " highlight search
-set incsearch  " incremental search, search as you type
-set ignorecase " Ignore case when searching 
-set smartcase " Ignore case when searching lowercase
-set background=dark 
-set showcmd
-set statusline=%F%m%r%h%w\ [TYPE=%Y\ %{&ff}]\ %{fugitive#statusline()}\ [%c\ %l/%L\ (%p%%)]
-set ls=2
-set wrap
-set formatoptions=qrn1
-set lbr
-set listchars=trail:.,tab:>-,eol:$
-set nolist
-set backspace=indent,eol,start
-set matchpairs+=<:>
-set vb t_vb= " Turn off bell, this could be more annoying, but I'm not sure how
-set sessionoptions=blank,buffers,curdir,folds,help,resize,tabpages,winsize
-
-" Prevent junk/swap files
-set nobackup
-set nowritebackup
-set noswapfile
-
-let g:loaded_matchparen= 1 " Turn off matching braces
-
-syntax on
-colorscheme ir_black
-
-" Turn off vim's default regex characters
-nnoremap / /\v
-vnoremap / /\v
-
-" Vertical split then to new buffer
-nnoremap <leader>v <C-w>v<C-w>l
-" Horizontal split then to new buffer
-nnoremap <leader>h <C-w>s<C-w>l
-nnoremap <leader>i :set list!<cr> " Toggle invisible chars
-
-" Clear recent search highlighting
-nnoremap <leader><space> :noh<cr>
-
-" Make the tab key match braces
-nnoremap <tab> %
-vnoremap <tab> %
-
-" Easily navigate around splits
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
-
-" Allows :w!! to write a file using sudo if you forgot to sudo vim <file>
-cnoremap w!! %!sudo tee > /dev/null %
-
-" Other Mappings
-inoremap jj <Esc>
-inoremap uu _
-inoremap hh =>
-inoremap aa @
-inoremap <up> <C-o>gk
-inoremap <down> <C-o>gj
-noremap <up> gk
-noremap k gk
-noremap <down> gj
-noremap j gj
-noremap E ge
-noremap <S-Enter> O<ESC> " inserts new line without going into insert mode
-noremap <Enter> o<ESC>
-
-" Error format when a line is longer than 120
-"match LongLineWarning '\%120v.*'
-
-" File Stuff
+call vundle#end()
 filetype plugin indent on
-au BufNewFile,BufRead *.install set filetype=php
-au BufNewFile,BufRead *.module set filetype=php
-au BufNewFile,BufRead Capfile set filetype=ruby
-autocmd FileType html :set filetype=xhtml 
 
-" When editing a file, always jump to the last cursor position
+set t_Co=256
+set background=dark
+
+syntax enable
+colorscheme desert
+
+set autoindent
+set autoread       " Automatically reload changes if detected
+set backspace=2    " Delete everything with backspace
+set backup
+set backupcopy=yes " see :help crontab"
+set backupdir=~/.vim/backup
+set cf                 " Enable error files & error jumping.
+set cindent
+set clipboard=unnamed
+set complete=.,w,b,u,U
+set completeopt=longest,menu
+set directory=~/.vim/tmp
+set encoding=utf-8
+set expandtab
+set foldlevelstart=99  " Remove folds
+set formatoptions=crql
+set hidden             " Change buffer - without saving
+set history=768        " Number of things to remember in history.
+set hlsearch
+set ignorecase  " Case insensitive search
+set incsearch
+set laststatus=2    " Always show the statusline
+set linebreak
+set list      " show trailing whitespace
+set listchars=tab:▸\ ,trail:▫
+set matchtime=2 " How many tenths of a second to blink
+set mouse=a     " Mouse in all modes
+set mousehide   " Hide mouse after chars typed
+set noerrorbells
+set novisualbell
+set ruler
+set scrolloff=3 " show context above/below cursorline
+set shiftwidth=2 " Tabs under smart indent
+set showcmd
+set showmatch   " Show matching brackets.
+set smartcase   " Non-case sensitive search
+set smarttab
+set softtabstop=2
+set statusline=
+set statusline+=[%n%H%M%R%W]\  " flags and buf no
+set statusline+=[%{strlen(&fenc)?&fenc:'none'}, " file encoding
+set statusline+=%{&ff}] " file format
+set statusline+=%y\     " filetype
+set statusline+=%t      " tail of filename
+set statusline+=\ %{fugitive#statusline()} " git branch
+set statusline+=%=      " left/right separator
+set statusline+=%c,     " cursor column
+set statusline+=%l/%L\  " cursor line/total lines
+set statusline+=%P      " percent through file
+set tabstop=8
+set timeoutlen=350     " Time to wait for a command (after leader for example)
+set t_vb=
+set wildignore+=*.o,*.obj,*.exe,*.so,*.dll,*.pyc
+set wildmenu           " Turn on Wild menu
+set wildmode=longest,list,full
+set wrap
+
+let mapleader=","
+" Fix crappy pasting of already formatted code
+imap <Leader>p <C-O>:set paste<CR><C-r>*<C-O>:set nopaste<CR>
+" Exit insert mode faster    
+inoremap jw <Esc>
+" Common typos
+command W w
+command Q q
+map <F1> <Esc>
+imap <F1> <Esc>
+" Removes doc lookup binding because it's easy to fat finger
+nmap K k
+vmap K k
+" Make line completion easier
+imap <C-l> <C-x><C-l>
+" Use ; for : in normal and visual mode, less keystrokes
+nnoremap ; :
+vnoremap ; :
+" Double percentage sign in command mode is expanded
+" to directory of current file - http://vimcasts.org/e/14
+cnoremap %% <C-R>=expand('%:h').'/'<cr>
+" Toggle invisible characters
+nnoremap <Leader>i :set list!<CR>
+" Clear recent search highlighting
+nnoremap <Leader><space> :noh<CR>
+" Toggle spelling mode with ,s
+nmap <silent> <Leader>s :set spell!<CR>
+" Window Movement
+nmap <silent> <C-h> :wincmd h<CR>
+nmap <silent> <C-j> :wincmd j<CR>
+nmap <silent> <C-k> :wincmd k<CR>
+nmap <silent> <C-l> :wincmd l<CR>
+" Previous Window
+"nmap <silent> <C-p> :wincmd p<CR>
+" Equal Size Windows
+nmap <silent> <Leader>w= :wincmd =<CR>
+" Window Splitting
+nmap <silent> <Leader>s :split<CR>
+nmap <silent> <Leader>v :vsplit<CR>
+nmap <silent> <Leader>c :close<CR>
+
+" md is markdown
+autocmd BufRead,BufNewFile *.md set filetype=markdown
+
+autocmd BufRead,BufNewFile *.install setfiletype php
+autocmd BufRead,BufNewFile *.test setfiletype php
+
+" No formatting on o key newlines
+autocmd BufNewFile,BufEnter * set formatoptions-=o
+
+" No more complaining about untitled documents
+autocmd FocusLost silent! :wa
+
+" Change indentation for perl files
+autocmd FileType perl setl sw=4 ts=4 sts=4 et
+
+" Help make nice commit messages
+autocmd FileType gitcommit highlight OverLength ctermbg=darkgrey guibg=#592929
+autocmd FileType gitcommit match OverLength /\%72v.*/
+autocmd FileType gitcommit setl tw=72 fo=cq wm=0
+
+" CoffeeScript
+autocmd BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
+
+" Auto-clean fugitive buffers
+autocmd BufReadPost fugitive://* set bufhidden=delete
+
+" Automatically rebalance windows on vim resize
+autocmd VimResized * :wincmd =
+
+" When editing a file, always jump to the last cursor position.
+" This must be after the uncompress commands.
 autocmd BufReadPost *
-\ if ! exists("g:leave_my_cursor_position:alone") |
-\ if line("'\"") > 0 && line("'\"") <= line("$") |
-\ exe "normal g'\"" |
-\ endif |
-\ endif
+  \ if line("'\"") > 1 && line ("'\"") <= line("$") |
+  \   exe "normal! g`\"" |
+  \ endif
 
-" Automatically source .vimrc when changes are made
-if has("autocmd")
-	autocmd BufWritePost .vimrc source $MYVIMRC
-endif
+" Plugin Configurations
+" ---------------------
+" SuperTab
+" Set these up for cross-buffer completion (something Neocachecompl has a hard
+" time with)
+let g:SuperTabDefaultCompletionType="<c-x><c-n>"
+let g:SuperTabContextDefaultCompletionType="<c-x><c-n>"
 
-autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-autocmd FileType python set omnifunc=pythoncomplete#Complete
-autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
-autocmd FileType php set omnifunc=phpcomplete#CompletePHP
-autocmd FileType c set omnifunc=ccomplete#Complete
-autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete 
+" Syntastic
+let g:syntastic_enable_signs=1
+let g:syntastic_auto_loc_list=1
+" let g:syntastic_mode_map = { 'mode': 'active',
+"       \ 'active_filetypes': ['install', 'module', 'inc', 'info', 'php'],
+"       \ 'passive_filetypes': ['perl', 'bash', 'sh'] }
+let g:syntastic_phpcs_disable=1
 
-" Debug PHP code with :pc
-cabbr pc !php -l %
+" Dash
+nmap <silent> <leader>d <Plug>DashSearch
+let g:dash_map = {
+  \ 'module' : ['drupal', 'php'],
+  \ 'inc' : ['drupal', 'php'],
+  \ 'install' : ['drupal', 'php'],
+  \ 'profile' : ['drupal', 'php']
+  \ }
 
-" Plugins
-let g:AutoComplPop_IgnoreCaseOption = 0
-let g:AutoComplPop_BehaviorKeywordLength = 2
-nnoremap <silent> <C-n> :NERDTreeToggle<CR>
-nnoremap <leader>a :Ack
-nnoremap <leader><tab> :Scratch
+" Fugitive
+nmap <Leader>gb :Gblame<CR>
+nmap <Leader>gd :Gdiff<CR>
+nmap <Leader>gx :wincmd h<CR>:q<CR> " Exit a diff by closing the diff window
+nmap <Leader>gc :Gcommit<CR>
+nmap <Leader>gs :Gstatus<CR>
 
-let g:user_zen_settings = {
-\ 'php' : {
-\ 'extends' : 'html',
-\ 'filters' : 'c',
-\ },
-\ 'xml' : {
-\ 'extends' : 'html',
-\ },
-\ 'haml' : {
-\ 'extends' : 'html',
-\ },
-\}
+" CtrlP
+let g:ctrlp_working_path_mode = 1 " Set the working path to the parent dir of the current file
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\.git$\|\.hg$\|\.svn$',
+  \ 'file': '\.exe$\|\.so$\|\.dll$',
+  \ }
+let g:ctrlp_user_command = {
+  \ 'types': {
+    \ 1: ['.git/', 'cd %s && git ls-files'],
+    \ },
+  \ 'fallback': 'find %s -type f'
+  \ }
+
+" Vundle
+nmap <Leader>bi :BundleInstall<CR>
+nmap <Leader>bu :BundleInstall!<CR>
+nmap <Leader>bc :BundleClean<CR>
+
+" ack.vim
+let g:ackprg = 'ag --nogroup --nocolor --column'
+
+" Functions
+" ---------
+" Fix Trailing White Space
+map <Leader>ws :%s/\s\+$//e<CR>
+command! FixTrailingWhiteSpace :%s/\s\+$//e
+
+" Quick spelling fix (first item in z= list)
+function! QuickSpellingFix()
+  if &spell
+    normal 1z=
+  else
+    " Enable spelling mode and do the correction
+    set spell
+    normal 1z=
+    set nospell
+  endif
+endfunction
+
+command! QuickSpellingFix call QuickSpellingFix()
+nmap <silent> <Leader>z :QuickSpellingFix<CR>
