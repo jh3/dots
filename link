@@ -1,31 +1,13 @@
 #!/usr/bin/env bash
 
-rm ~/.bashrc
-rm ~/.bash_profile
-rm ~/.bash_aliases
-ln -s ~/Projects/dots/bash/bashrc ~/.bashrc
-ln -s ~/Projects/dots/bash/bash_profile ~/.bash_profile
-ln -s ~/Projects/dots/bash/bash_aliases ~/.bash_aliases
-
 rm ~/.vim
 rm ~/.vimrc
 rm ~/.gvimrc
-ln -s ~/Projects/dots/vim ~/.vim
-ln -s ~/Projects/dots/vim/vimrc ~/.vimrc
-ln -s ~/Projects/dots/vim/gvimrc ~/.gvimrc
 
-rm ~/.gemrc
-rm ~/.screenrc
-rm ~/.irbrc
-ln -s ~/Projects/dots/misc/gemrc ~/.gemrc
-ln -s ~/Projects/dots/misc/screenrc ~/.screenrc
-ln -s ~/Projects/dots/misc/irbrc ~/.irbrc
-
-rm ~/bin
-ln -s ~/Projects/dots/bin ~/bin
-
-# Find all doc files in the bundle/plugin folders and move
-# them to the main .vim/doc folder so vim knows about them
-find ~/Projects/dots/vim/bundle -type f -name "*.txt" -iwholename "*/doc/*.txt" -exec cp {} ~/Projects/dots/vim/doc \;
-
-source ~/.bash_profile
+ln -s $(pwd)/vim/vimrc ~/.vimrc
+ln -s $(pwd)/vim/gvimrc ~/.gvimrc
+ln -s $(pwd)/git/gitconfig ~/.gitconfig
+ln -s $(pwd)/git/gitignore ~/.gitignore
+ln -s $(pwd)/git/gitattributes ~/.gitattributes
+ln -s $(pwd)/git/git_template ~/.git_template
+ln -s $(pwd)/tmux.conf ~/.tmux.conf
